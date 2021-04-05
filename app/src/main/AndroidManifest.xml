@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.smartcity_test3">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SmartCity_test3">
+        android:theme="@style/Theme.SmartCity_test3"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".parkingLot.ParkJiLuActivity" android:parentActivityName=".parkingLot.ParkingActivity" android:label="停车记录"></activity>
+        <activity
+            android:name=".parkingLot.ParkingInfoActivity"
+            android:label="停车场详情"
+            android:parentActivityName=".parkingLot.ParkingActivity" />
+        <activity
+            android:name=".parkingLot.ParkingActivity"
+            android:label="停车场功能模块"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

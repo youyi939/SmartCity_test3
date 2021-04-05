@@ -24,6 +24,7 @@ import com.example.smartcity_test3.R;
 import com.example.smartcity_test3.ui.home.adapter.LabelAdapter;
 import com.example.smartcity_test3.ui.home.adapter.MyAdapter;
 import com.example.smartcity_test3.ui.home.adapter.ServiceAdapter;
+import com.example.smartcity_test3.ui.home.adapter.XinWenAdapter;
 import com.example.smartcity_test3.ui.home.pojo.Img;
 import com.example.smartcity_test3.ui.home.pojo.Item;
 import com.example.smartcity_test3.ui.home.pojo.ItemData;
@@ -50,6 +51,7 @@ public class HomeFragment extends Fragment {
     private List<Item> itemList = new ArrayList<>();
     private RecyclerView recyclerLabel_home;
     private ListView listViewXinwen_home;
+    private XinWenAdapter xinWenAdapter;
 
     //lunbo
     private ViewPager viewPager;
@@ -86,9 +88,11 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        handler.sendEmptyMessage(1);
-        handler.sendEmptyMessage(2);
-        handler.sendEmptyMessage(4);
+        if (itemList.size()>0){
+            handler.sendEmptyMessage(1);
+            handler.sendEmptyMessage(2);
+            handler.sendEmptyMessage(4);
+        }
     }
 
     /**
@@ -120,10 +124,15 @@ public class HomeFragment extends Fragment {
                     LabelAdapter labelAdapter = new LabelAdapter(itemList,handler);
                     recyclerLabel_home.setLayoutManager(manager1);
                     recyclerLabel_home.setAdapter(labelAdapter);
+
+                    Log.i("Ken", "handleMessage: "+itemList.size());
+                    xinWenAdapter = new XinWenAdapter(getContext(),R.layout.item_xinwen,itemList.get(0).getDataList());
+                    listViewXinwen_home.setAdapter(xinWenAdapter);
                     break;
                 case 5:
                     int i = (int)msg.obj;
-                    Log.i("Ken", "handleMessage: "+i);
+                    xinWenAdapter = new XinWenAdapter(getContext(),R.layout.item_xinwen,itemList.get(i).getDataList());
+                    listViewXinwen_home.setAdapter(xinWenAdapter);
                     break;
             }
         }

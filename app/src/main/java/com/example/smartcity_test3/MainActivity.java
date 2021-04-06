@@ -1,5 +1,6 @@
 package com.example.smartcity_test3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -59,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        Intent intent = getIntent();
+        if (intent.getBooleanExtra("login",false)){
+            replace(personalFragment);
+        }
 
     }
 

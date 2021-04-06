@@ -24,8 +24,9 @@
             android:layout_weight="1"
             />
         <TextView
+            android:maxLines="3"
             android:ellipsize="end"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:id="@+id/content_xinwen"
             android:layout_width="match_parent"

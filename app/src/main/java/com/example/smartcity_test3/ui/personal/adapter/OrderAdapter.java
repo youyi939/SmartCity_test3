@@ -1,4 +1,4 @@
-package com.example.smartcity_test3.utils;
+package com.example.smartcity_test3.ui.personal.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,14 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.smartcity_test3.R;
+import com.example.smartcity_test3.ui.personal.pojo.Order;
 
 import java.util.List;
 
-public class ListViewAdapter extends ArrayAdapter<String> {
+
+
+
+public class OrderAdapter extends ArrayAdapter<Order> {
 
     private int resourceId;
+    public OrderAdapter(@NonNull Context context, int resource, @NonNull List<Order> objects) {
 
-    public ListViewAdapter(@NonNull Context context, int resource, @NonNull List<String> objects) {
         super(context, resource, objects);
         this.resourceId = resource;
     }
@@ -30,9 +34,22 @@ public class ListViewAdapter extends ArrayAdapter<String> {
         if (convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
         }
+        Order order = getItem(position);
+        TextView time = convertView.findViewById(R.id.time_order);
+        TextView num = convertView.findViewById(R.id.num_order);
+
+        time.setText(order.getCreateTime());
+        num.setText(order.getOrderNum());
 
 
 
         return convertView;
     }
 }
+
+
+
+
+
+
+

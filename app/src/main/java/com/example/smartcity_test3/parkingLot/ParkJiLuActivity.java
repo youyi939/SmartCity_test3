@@ -30,28 +30,40 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ParkJiLuActivity extends AppCompatActivity {
-    private ListView listView_jilu;
-    private Button more;
-    private Button chaxun;
-    private EditText in_jilu;
-    private EditText out_jilu;
+
+    @BindView(R.id.listView_jilu)
+    ListView listView_jilu;
+
+    @BindView(R.id.more_jilu)
+    Button more;
+
+    @BindView(R.id.chaxun_jilu)
+    Button chaxun;
+
+    @BindView(R.id.in_jilu)
+    EditText in_jilu;
+
+    @BindView(R.id.out_jilu)
+    EditText out_jilu;
+
     private List<Jilu> jiluList = new ArrayList<>();
     private List<Jilu> jiluList2 = new ArrayList<>();
     private ParkJiLuAdapter adapter;
-    private LinearLayout linnerlayout_jilu;
+
+    @BindView(R.id.linnerlayout_jilu)
+    LinearLayout linnerlayout_jilu;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_park_ji_lu);
-        listView_jilu = findViewById(R.id.listView_jilu);
-        more = findViewById(R.id.more_jilu);
-        in_jilu = findViewById(R.id.in_jilu);
-        out_jilu = findViewById(R.id.out_jilu);
-        chaxun = findViewById(R.id.chaxun_jilu);
-        linnerlayout_jilu = findViewById(R.id.linnerlayout_jilu);
+        ButterKnife.bind(this);
+
 
         chaxun.setOnClickListener(new View.OnClickListener() {
             @Override

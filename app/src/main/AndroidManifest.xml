@@ -12,11 +12,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartCity_test3"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.personal.activity.PersonalInfoActivity" android:parentActivityName=".MainActivity" android:label="个人信息详情"></activity>
-        <activity android:name=".ui.personal.activity.LoginActivity" android:label="登陆页面" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".ui.personal.activity.OrderActivity" android:parentActivityName=".MainActivity" android:label="订单列表页面"/>
-        <activity android:name=".ui.personal.activity.FeedbackActivity" android:label="意见反馈页面" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".ui.personal.activity.ChangePasswordActivity" android:parentActivityName=".MainActivity" android:label="修改密码页面"/>
+        <activity android:name=".CitySubway.CItySubWayActivity"
+            android:label="城市地铁"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".ui.personal.activity.PersonalInfoActivity"
+            android:label="个人信息详情"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ui.personal.activity.LoginActivity"
+            android:label="登陆页面"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ui.personal.activity.OrderActivity"
+            android:label="订单列表页面"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ui.personal.activity.FeedbackActivity"
+            android:label="意见反馈页面"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ui.personal.activity.ChangePasswordActivity"
+            android:label="修改密码页面"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".parkingLot.ParkJiLuActivity"
             android:label="停车记录"

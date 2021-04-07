@@ -29,13 +29,22 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ParkingActivity extends AppCompatActivity {
 
     private List<Parking> parkingList = new ArrayList<>();
     private List<Parking> parkingList2 = new ArrayList<>();
-    private LinearLayout linnerlayout_parking;
-    private ListView listView_parking;
-    private Button more_parking;
+
+    @BindView(R.id.linnerlayout_parking)
+    LinearLayout linnerlayout_parking;
+
+    @BindView(R.id.listView_parking)
+    ListView listView_parking;
+
+    @BindView(R.id.more_parking)
+    Button more_parking;
     private ParkingLotAdapter adapter;
 
     @Override
@@ -62,9 +71,7 @@ public class ParkingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parking);
-        linnerlayout_parking = findViewById(R.id.linnerlayout_parking);
-        listView_parking = findViewById(R.id.listView_parking);
-        more_parking = findViewById(R.id.more_parking);
+        ButterKnife.bind(this);
 
         more_parking.setOnClickListener(new View.OnClickListener() {
             @Override

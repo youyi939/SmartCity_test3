@@ -35,6 +35,12 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Optional;
+import butterknife.Unbinder;
+
 public class PersonalFragment extends Fragment {
 
     private PersonalViewModel mViewModel;
@@ -43,75 +49,28 @@ public class PersonalFragment extends Fragment {
     }
 
 
-    private Button logout_personal;
-    private Button feedback_personal;
-    private Button order_personal;
-    private Button change_personal;
-    private Button info_personal;
+    private Unbinder unbinder;
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
-    private ImageView imageView;
-    private TextView nikeName_personal;
+    @Nullable
+    @BindView(R.id.avatar_personal)
+    ImageView imageView;
 
+    @Nullable
+    @BindView(R.id.nikeName_personal)
+    TextView nikeName_personal;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.personal_fragment, container, false);
-        logout_personal  = root.findViewById(R.id.logout_personal);
-        feedback_personal = root.findViewById(R.id.feedback_personal);
-        order_personal = root.findViewById(R.id.order_personal);
-        change_personal = root.findViewById(R.id.change_personal);
-        info_personal = root.findViewById(R.id.info_personal);
+        View root1 = inflater.inflate(R.layout.personal_fragment, container, false);
+        unbinder = ButterKnife.bind(this,root1);
         sharedPreferences = getActivity().getSharedPreferences("data",0);
         editor  =getActivity().getSharedPreferences("data",0).edit();
-        imageView = root.findViewById(R.id.avatar_personal);
-        nikeName_personal  =root.findViewById(R.id.nikeName_personal);
 
-        logout_personal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editor.clear().commit();
-                Intent intent = new Intent(getContext(), LoginActivity.class);
-                getActivity().startActivity(intent);
-            }
-        });
-
-        change_personal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ChangePasswordActivity.class);
-                getActivity().startActivity(intent);
-            }
-        });
-
-        info_personal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), PersonalInfoActivity.class);
-                getActivity().startActivity(intent);
-            }
-        });
-
-        order_personal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), OrderActivity.class);
-                getActivity().startActivity(intent);
-            }
-        });
-
-        feedback_personal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), FeedbackActivity.class);
-                getActivity().startActivity(intent);
-            }
-        });
-
-        return root;
+        return root1;
     }
 
     @Override
@@ -151,6 +110,34 @@ public class PersonalFragment extends Fragment {
 
         }
 
+    }
+
+    @Optional
+    @OnClick({R.id.feedback_personal,R.id.order_personal,R.id.info_personal,R.id.change_info,R.id.logout_personal})
+    public void test(View view){
+        switch (view.getId()){
+            case R.id.feedback_personal:
+                Intent intent = new Intent(getContext(), FeedbackActivity.class);
+                getActivity().startActivity(intent);
+                break;
+            case R.id.order_personal:
+                Intent intent1 = new Intent(getContext(), OrderActivity.class);
+                getActivity().startActivity(intent1);
+                break;
+            case R.id.info_personal:
+                Intent intent2 = new Intent(getContext(), PersonalInfoActivity.class);
+                getActivity().startActivity(intent2);
+                break;
+            case R.id.change_personal:
+                Intent intent3 = new Intent(getContext(), ChangePasswordActivity.class);
+                getActivity().startActivity(intent3);
+                break;
+            case R.id.logout_personal:
+                editor.clear().commit();
+                Intent intent4 = new Intent(getContext(), LoginActivity.class);
+                getActivity().startActivity(intent4);
+                break;
+        }
     }
 
 
@@ -201,14 +188,6 @@ public class PersonalFragment extends Fragment {
     };
 
 
-
-
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -216,4 +195,9 @@ public class PersonalFragment extends Fragment {
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+    }
 }

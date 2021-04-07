@@ -22,29 +22,41 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ParkingInfoActivity extends AppCompatActivity {
 
     private Parking parking;
-    private TextView name;
-    private TextView address;
-    private TextView priceCaps;
-    private TextView vacancy;
-    private TextView distance;
-    private ImageView imageView;
-    private TextView state_parkInfo;
+
+    @BindView(R.id.name_parkinfo)
+    TextView name;
+
+    @BindView(R.id.address_parkinfo)
+    TextView address;
+
+    @BindView(R.id.priceCaps_parkinfo)
+    TextView priceCaps;
+
+    @BindView(R.id.vacancy_parkinfo)
+    TextView vacancy;
+
+    @BindView(R.id.distance_parkinfo)
+    TextView distance;
+
+    @BindView(R.id.img_parkInfo)
+    ImageView imageView;
+
+    @BindView(R.id.state_parkInfo)
+    TextView state_parkInfo;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parking_info);
-        name = findViewById(R.id.name_parkinfo);
-        address = findViewById(R.id.address_parkinfo);
-        priceCaps = findViewById(R.id.priceCaps_parkinfo);
-        vacancy = findViewById(R.id.vacancy_parkinfo);
-        distance = findViewById(R.id.distance_parkinfo);
-        imageView = findViewById(R.id.img_parkInfo);
-        state_parkInfo = findViewById(R.id.state_parkInfo);
+        ButterKnife.bind(this);
+
         Intent intent = getIntent();
         if (intent.getIntExtra("id",0)!=0){
             getParkingLot(intent.getIntExtra("id",0));

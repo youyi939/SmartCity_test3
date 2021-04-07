@@ -43,37 +43,49 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnItemClick;
+import butterknife.Unbinder;
+
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    private Unbinder unbinder;
     //xinwen
     private List<Item> itemList = new ArrayList<>();
-    private RecyclerView recyclerLabel_home;
-    private ListView listViewXinwen_home;
+    @Nullable
+    @BindView(R.id.recyclerLabel_home)
+    RecyclerView recyclerLabel_home;
+    @Nullable
+    @BindView(R.id.listViewXinwen_home)
+    ListView listViewXinwen_home;
     private XinWenAdapter xinWenAdapter;
 
     //lunbo
+
     private ViewPager viewPager;
+
     private List<Img> imgList = new ArrayList<>();
     private MyAdapter myAdapter;
 
     //service
-    private RecyclerView recyclerService_home;
+    @Nullable
+    @BindView(R.id.recyclerService_home)
+    RecyclerView recyclerService_home;
+
     private List<Item_Service> serviceList = new ArrayList<>();
     private ServiceAdapter serviceAdapter;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        recyclerService_home = root.findViewById(R.id.recyclerService_home);
+        unbinder = ButterKnife.bind(this,root);
         viewPager = root.findViewById(R.id.viewPager_home);
-        recyclerLabel_home = root.findViewById(R.id.recyclerLabel_home);
-        listViewXinwen_home = root.findViewById(R.id.listViewXinwen_home);
-
         return root;
     }
 
@@ -236,10 +248,9 @@ public class HomeFragment extends Fragment {
     }
 
 
-
-
-
-
-
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+    }
 }

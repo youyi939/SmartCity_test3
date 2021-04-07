@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.smartcity_test3.CitySubway.CItySubWayActivity;
 import com.example.smartcity_test3.R;
 import com.example.smartcity_test3.parkingLot.ParkingActivity;
 import com.example.smartcity_test3.ui.home.pojo.Item_Service;
@@ -54,7 +55,11 @@ public class ServiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 if (test.getServiceName().equals("停车场")){
                     Intent intent = new Intent(holder.itemView.getContext(), ParkingActivity.class);
                     holder.itemView.getContext().startActivity(intent);
+                }else if (test.getServiceName().equals("城市地铁")){
+                    Intent intent = new Intent(holder.itemView.getContext(), CItySubWayActivity.class);
+                    holder.itemView.getContext().startActivity(intent);
                 }
+
             }
         });
 

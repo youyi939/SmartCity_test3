@@ -43,7 +43,6 @@ public class FeedbackActivity extends AppCompatActivity {
                 }else {
                     String url = "http://124.93.196.45:10002/userinfo/feedback";
                     feedback(url,token,userId,feed.getText().toString());
-
                 }
             }
         });

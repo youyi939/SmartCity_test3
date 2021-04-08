@@ -33,7 +33,6 @@ public class OrderActivity extends AppCompatActivity {
         listView_order = findViewById(R.id.listView_order);
         sharedPreferences  =getSharedPreferences("data",0);
 
-
         getOrderList();
     }
 
@@ -45,7 +44,7 @@ public class OrderActivity extends AppCompatActivity {
             public void run() {
                 try {
                     String token = sharedPreferences.getString("token","k");
-                    String url = "http://124.93.196.45:10002/userinfo/orders/list?pageNum=1&pageSize=30&userId=2";
+                    String url = "http://124.93.196.45:10002/userinfo/orders/list?&userId=2";
                     String json = KenUtil.Get_T(url,token);
                     JSONObject jsonObject = new JSONObject(json);
                     JSONArray jsonArray = jsonObject.getJSONArray("data");

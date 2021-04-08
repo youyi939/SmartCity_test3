@@ -12,9 +12,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartCity_test3"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CitySubway.CItySubWayActivity"
-            android:label="城市地铁"
-            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".Bus.MainActivity5" android:label="订单提交" android:parentActivityName=".Bus.MainActivity4"></activity>
+        <activity
+            android:label="信息完善"
+            android:name=".Bus.MainActivity4"
+            android:parentActivityName=".Bus.MainActivity3" />
+        <activity android:name=".Bus.MainActivity3" android:label="日期选择" />
+        <activity
+            android:label="详情"
+            android:name=".Bus.MainActivity2"
+            android:parentActivityName=".Bus.MainActivity1" />
+        <activity android:name=".Bus.MainActivity1" android:label="智慧巴士" android:parentActivityName=".MainActivity">
+
+        </activity>
+
+        <activity android:name=".ui.newsItem.Detail_NewItemActivity"></activity>
+        <activity android:name=".ui.home.AllServiceActivity" android:label="全部服务" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".CitySubway.CityDetailsActivity" />
+        <activity android:name=".CitySubway.CitySubwayActivity" android:parentActivityName=".MainActivity" android:label="城市地铁"></activity>
+
+        <activity android:name=".traffic.TrafficInfoActivity" android:parentActivityName=".traffic.TrafficListActivity" android:label="违法详情"></activity>
+        <activity
+            android:name=".traffic.TrafficListActivity"
+            android:label="违章记录页面"
+            android:parentActivityName=".traffic.TrafficActivity" />
+        <activity
+            android:name=".traffic.TrafficActivity"
+            android:label="违章查询页面"
+            android:parentActivityName=".MainActivity" />
+
         <activity
             android:name=".ui.personal.activity.PersonalInfoActivity"
             android:label="个人信息详情"

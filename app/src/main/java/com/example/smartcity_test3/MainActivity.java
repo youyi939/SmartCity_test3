@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.smartcity_test3.ui.Xinwen.XinwenFragment;
 import com.example.smartcity_test3.ui.dashboard.DashboardFragment;
 import com.example.smartcity_test3.ui.home.HomeFragment;
+import com.example.smartcity_test3.ui.newsItem.NewsItemFragment;
 import com.example.smartcity_test3.ui.notifications.NotificationsFragment;
 import com.example.smartcity_test3.ui.personal.PersonalFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private NotificationsFragment notificationsFragment = new NotificationsFragment();
     private DashboardFragment dashboardFragment = new DashboardFragment();
     private PersonalFragment personalFragment = new PersonalFragment();
-    private XinwenFragment xinwenFragment = new XinwenFragment();
+    private NewsItemFragment xinwenFragment = new NewsItemFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

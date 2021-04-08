@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_personal"
-        android:name="com.example.smartcity_test3.ui.Xinwen.XinwenFragment"
+        android:name="com.example.smartcity_test3.ui.personal.PersonalFragment"
         android:label="个人中心"
         tools:layout="@layout/personal_fragment" />
 
@@ -33,5 +33,5 @@
         android:id="@+id/navigation_xinwen"
         android:name="com.example.smartcity_test3.ui.personal.PersonalFragment"
         android:label="新闻"
-        tools:layout="@layout/xinwen_fragment" />
+        tools:layout="@layout/frament_news_item" />
 </navigation>

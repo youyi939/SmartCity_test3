@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,62 +16,52 @@ import com.example.smartcity_test3.CitySubway.CitySubwayActivity;
 import com.example.smartcity_test3.R;
 import com.example.smartcity_test3.parkingLot.ParkingActivity;
 import com.example.smartcity_test3.traffic.TrafficActivity;
-import com.example.smartcity_test3.ui.home.AllServiceActivity;
 import com.example.smartcity_test3.ui.home.pojo.Item_Service;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.List;
 
-public class ServiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecyclerAdapter_Service_All extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Item_Service> list;
     private RecyclerView.ViewHolder holder;
+    private List<Item_Service> item_serviceList;
 
-    public ServiceAdapter(List<Item_Service> list) {
-        this.list = list;
+    public RecyclerAdapter_Service_All(List<Item_Service> itemList) {
+        this.item_serviceList = itemList;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_service,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_all_layout,parent,false);
         holder = new RecyclerView.ViewHolder(view) {};
-
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Item_Service test = list.get(position);
-        TextView name = holder.itemView.findViewById(R.id.name_service);
-        ImageView imageView = holder.itemView.findViewById(R.id.img_service);
-        name.setText(test.getServiceName());
-
-        if (test.getServiceName().equals("更多服务")){
-            Glide.with(holder.itemView).load(R.drawable.ic_launcher_foreground).into(imageView);
-        }else {
-            Glide.with(holder.itemView).load(test.getImgUrl()).into(imageView);
-        }
-
+        Item_Service item_service = item_serviceList.get(position);
+        TextView title = holder.itemView.findViewById(R.id.item_title_all);
+        ShapeableImageView imageView = holder.itemView.findViewById(R.id.item_img_all);
+        title.setText(item_service.getServiceName());
+        Glide.with(holder.itemView).load(item_service.getImgUrl()).into(imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (test.getServiceName().equals("停车场")){
+                    Toast.makeText(holder.itemView.getContext(),item_service.getServiceName(),Toast.LENGTH_SHORT).show();
+                if (item_service.getServiceName().equals("停车场")){
                     Intent intent = new Intent(holder.itemView.getContext(), ParkingActivity.class);
                     holder.itemView.getContext().startActivity(intent);
-                }else if (test.getServiceName().equals("违章查询")){
+                }else if (item_service.getServiceName().equals("违章查询")){
                     Intent intent = new Intent(holder.itemView.getContext(), TrafficActivity.class);
                     holder.itemView.getContext().startActivity(intent);
-                }else if (test.getServiceName().equals("城市地铁")){
+                }else if (item_service.getServiceName().equals("城市地铁")){
                     Intent intent = new Intent(holder.itemView.getContext(), CitySubwayActivity.class);
                     holder.itemView.getContext().startActivity(intent);
-                }else if (test.getServiceName().equals("更多服务")){
-                    Intent intent = new Intent(holder.itemView.getContext(), AllServiceActivity.class);
-                    holder.itemView.getContext().startActivity(intent);
-                }else if (test.getServiceName().equals("智慧巴士")){
+                }else if (item_service.getServiceName().equals("智慧巴士")){
                     Intent intent = new Intent(holder.itemView.getContext(), MainActivity1.class);
                     holder.itemView.getContext().startActivity(intent);
                 }
-
             }
         });
 
@@ -79,6 +69,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return item_serviceList.size();
     }
 }

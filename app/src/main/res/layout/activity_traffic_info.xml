@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".traffic.TrafficInfoActivity">
+
+    <TextView
+        android:id="@+id/trafficOffence_info"
+        android:hint="违法行为"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+    <TextView
+        android:id="@+id/illegalSites_info"
+        android:hint="违法地点"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/badTime_info"
+        android:hint="违法时间"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/deductMarks_info"
+        android:hint="违章记分"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/money_info"
+        android:hint="罚款金额"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/noticeNo_info"
+        android:hint="通知书号"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

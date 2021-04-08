@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/parking_menu"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        app:showAsAction="always"
-        android:title="test" />
-
+        android:id="@+id/my_btn"
+        android:title="btn"
+        app:showAsAction="always|withText"
+        android:icon="@drawable/ic_launcher_background"/>
 
 </menu>
